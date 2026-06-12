@@ -1,0 +1,98 @@
+Attendance Management System - Directory Structure (Tree)
+
+/
+├─ AGENTS.md
+├─ CLAUDE.md
+├─ eslint.config.mjs
+├─ next-env.d.ts
+├─ next.config.ts
+├─ package.json
+├─ postcss.config.mjs
+├─ README.md
+├─ tsconfig.json
+├─ app
+│  ├─ globals.css
+│  ├─ layout.tsx
+│  ├─ midware.ts
+│  ├─ page.tsx
+│  ├─ admin
+│  │  ├─ layout.tsx
+│  │  ├─ attendance
+│  │  │  ├─ page.tsx
+│  │  │  └─ history
+│  │  │     └─ page.tsx
+│  │  ├─ dashboard
+│  │  │  └─ page.tsx
+│  │  ├─ reports
+│  │  │  └─ page.tsx
+│  │  └─ students
+│  │     ├─ page.tsx
+│  │     ├─ add
+│  │     │  └─ page.tsx
+│  │     ├─ edit
+│  │     │  └─ [id]
+│  │     │     └─ page.tsx
+│  │     └─ profile
+│  │        └─ (files)
+│  ├─ api
+│  │  ├─ admin
+│  │  │  └─ dashboard
+│  │  │     └─ route.ts
+│  │  ├─ attendance
+│  │  │  ├─ route.ts
+│  │  │  └─ save
+│  │  │     └─ route.ts
+│  │  ├─ history
+│  │  │  └─ route.ts
+│  │  ├─ login
+│  │  │  └─ route.js
+│  │  ├─ logut
+│  │  │  └─ route.ts
+│  │  └─ students
+│  │     ├─ route.ts
+│  │     ├─ [id]
+│  │     │  └─ route.ts
+│  │     ├─ change-password
++│  │     │  └─ route.ts
+│  │     ├─ history
+│  │     │  └─ route.ts
+│  │     └─ year
+│  │        └─ route.ts
+│  ├─ login
+│  │  └─ page.tsx
+│  ├─ reports
+│  │  └─ page.tsx
+│  ├─ settings
+│  │  └─ page.tsx
+│  └─ student
+│     ├─ page.tsx
+│     ├─ add
+│     │  └─ page.tsx
+│     ├─ dashboard
+│     │  └─ page.tsx
+│     ├─ edit
+│     │  └─ [id]
+│     │     └─ page.tsx
+│     ├─ history
+│     │  └─ page.tsx
+│     ├─ profile
+│     │  └─ page.tsx
+│     └─ settings
+│        └─ page.tsx
+├─ components
+│  ├─ AdminSidebar.tsx
+│  ├─ AdminTopbar.tsx
+│  ├─ Card.tsx
+│  ├─ DashboardCard.tsx
+│  ├─ Footer.tsx
+│  ├─ Navbar.tsx
+│  ├─ QuickActions.tsx
+│  ├─ RecentActivity.tsx
+│  ├─ Sidebar.tsx
+│  └─ Statistics.tsx
+├─ lib
+│  ├─ db.ts
+│  ├─ studentData.ts
+│  └─ students.js
+├─ public
+└─ utils
