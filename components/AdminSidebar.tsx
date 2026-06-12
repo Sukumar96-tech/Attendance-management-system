@@ -1,22 +1,13 @@
-
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function AdminSidebar() {
   const pathname = usePathname();
-  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
-  async function logout() {
-  await fetch("/api/logout", {
-    method: "POST",
-  });
-
-  localStorage.clear();
-
-  window.location.replace("/login");
-}
   const menu = [
     {
       name: "🏠 Dashboard",
@@ -35,6 +26,66 @@ export default function AdminSidebar() {
       link: "/admin/history",
     },
     {
+      name: "📊 Reports",
+      link: "/admin/reports",
+    },
+    {
+      name: "⚙️ Settings",
+      link: "/admin/settings",
+    },
+  ];
+
+  async function logout() {
+    await fetch("/api/logout", {
+      method: "POST",
+    });
+
+    localStorage.clear();
+    window.location.replace("/login");
+  }
+
+  return (
+    <>
+      <button
+        className="menu-btn"
+        onClick={() => setOpen(!open)}
+      >
+        ☰
+      </button>
+
+      <aside className={`sidebar ${open ? "show" : ""}`}>
+        <h2>🎓 College ERP</h2>
+
+        <ul>
+          {menu.map((item) => (
+            <li
+              key={item.link}
+              className={
+                pathname === item.link
+                  ? "active-menu"
+                  : ""
+              }
+            >
+              <Link
+                href={item.link}
+                onClick={() => setOpen(false)}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          className="logout-btn"
+          onClick={logout}
+        >
+          🚪 Logout
+        </button>
+      </aside>
+    </>
+  );
+}    {
       name: "📊 Reports",
       link: "/admin/reports",
     },
