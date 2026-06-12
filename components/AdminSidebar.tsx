@@ -76,57 +76,15 @@ export default function AdminSidebar() {
           ))}
         </ul>
 
-        <button
-          className="logout-btn"
-          onClick={logout}
-        >
-          🚪 Logout
-        </button>
+        <div style={{ marginTop: "30px", padding: "10px" }}>
+          <button
+            className="logout-btn"
+            onClick={logout}
+          >
+            🚪 Logout
+          </button>
+        </div>
       </aside>
     </>
   );
-}    {
-      name: "📊 Reports",
-      link: "/admin/reports",
-    },
-    {
-      name: "⚙️ Settings",
-      link: "/admin/settings",
-    },
-  ];
-
-  return (
-    <aside className="sidebar">
-
-      <h2>🎓 College ERP</h2>
-
-      <ul>
-        {menu.map((item) => (
-          <li
-            key={item.link}
-            className={
-              pathname === item.link
-                ? "active-menu"
-                : ""
-            }
-          >
-            <Link href={item.link}>
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <div style={{ marginTop: "30px", padding: "10px" }}>
-        <button
-          className="logout-btn"
-          onClick={logout}
-        >
-          🚪 Logout
-        </button>
-      </div>
-
-    </aside>
-  );
 }
-
