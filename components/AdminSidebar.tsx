@@ -46,14 +46,24 @@ export default function AdminSidebar() {
 
   return (
     <>
+      {/* Mobile Menu Button */}
       <button
-        className="menu-btn"
-        onClick={() => setOpen(!open)}
+        className="mobile-menu-btn"
+        onClick={() => setOpen(true)}
       >
         ☰
       </button>
 
-      <aside className={`sidebar ${open ? "show" : ""}`}>
+      {/* Overlay */}
+      {open && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setOpen(false)}
+        ></div>
+      )}
+
+      {/* Sidebar */}
+      <aside className={`sidebar ${open ? "sidebar-open" : ""}`}>
         <h2>🎓 College ERP</h2>
 
         <ul>
@@ -76,14 +86,12 @@ export default function AdminSidebar() {
           ))}
         </ul>
 
-        <div style={{ marginTop: "30px", padding: "10px" }}>
-          <button
-            className="logout-btn"
-            onClick={logout}
-          >
-            🚪 Logout
-          </button>
-        </div>
+        <button
+          className="logout-btn"
+          onClick={logout}
+        >
+          🚪 Logout
+        </button>
       </aside>
     </>
   );
