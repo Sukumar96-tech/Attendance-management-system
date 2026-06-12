@@ -1021,23 +1021,38 @@ font-size:18px;
   }
 }
 /* ===========================
-   Professional Mobile Sidebar
+   Professional Responsive Sidebar
 =========================== */
+
+/* Mobile Menu Button */
 
 .mobile-menu-btn{
 display:none;
 position:fixed;
-top:15px;
-left:15px;
-z-index:2000;
-background:#2563eb;
-color:#fff;
+top:12px;
+left:12px;
+width:48px;
+height:48px;
+background:#ffffff;
+color:#111;
 border:none;
-padding:10px 14px;
-font-size:24px;
-border-radius:8px;
+border-radius:50%;
+font-size:28px;
+font-weight:bold;
 cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+z-index:3000;
+align-items:center;
+justify-content:center;
+padding:0;
+transition:.3s;
 }
+
+.mobile-menu-btn:hover{
+transform:scale(1.05);
+}
+
+/* Overlay */
 
 .sidebar-overlay{
 position:fixed;
@@ -1046,41 +1061,74 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,.45);
-z-index:1500;
+z-index:2500;
 }
 
-@media (max-width:768px){
+/* ===========================
+   Desktop
+=========================== */
 
-.mobile-menu-btn{
-display:block;
+@media (min-width:769px){
+
+.mobile-menu-btn,
+.sidebar-overlay{
+display:none !important;
 }
 
 .sidebar{
 position:fixed;
 top:0;
-left:-280px;
-width:260px;
+left:0;
+width:250px;
 height:100vh;
 background:#1e3a8a;
 padding:20px;
-transition:.3s;
-z-index:2001;
 overflow-y:auto;
 }
 
-.sidebar-open{
+.main-content{
+margin-left:250px;
+padding:20px;
+}
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+.mobile-menu-btn{
+display:flex;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+left:-270px;
+width:250px;
+height:100vh;
+background:#1e3a8a;
+padding:20px;
+overflow-y:auto;
+transition:left .3s ease;
+z-index:2600;
+}
+
+.sidebar.sidebar-open{
 left:0;
 }
 
 .sidebar h2{
-font-size:30px;
+font-size:26px;
 text-align:center;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .sidebar ul{
 list-style:none;
 padding:0;
+margin:0;
 }
 
 .sidebar li{
@@ -1092,7 +1140,7 @@ display:block;
 padding:10px;
 color:#fff;
 text-decoration:none;
-font-size:18px;
+font-size:17px;
 }
 
 .active-menu{
@@ -1102,17 +1150,17 @@ border-radius:8px;
 
 .logout-btn{
 width:100%;
-margin-top:25px;
+margin-top:20px;
 padding:12px;
 background:#dc2626;
 color:#fff;
 border:none;
 border-radius:8px;
-font-size:18px;
+font-size:16px;
 }
 
 .main-content{
-margin-left:0 !important;
+margin-left:0;
 width:100%;
 padding:15px;
 }
@@ -1122,12 +1170,15 @@ padding:15px;
 .student-summary,
 .reports-grid,
 .action-grid{
+display:grid;
 grid-template-columns:1fr !important;
+gap:12px;
 }
 
 .students-header{
 flex-direction:column;
 gap:10px;
+align-items:stretch;
 }
 
 .students-page input,
@@ -1144,24 +1195,11 @@ white-space:nowrap;
 }
 
 .topbar{
-padding-top:60px;
+padding-top:70px;
+flex-direction:column;
+gap:10px;
+text-align:center;
 }
 }
 
-/* Desktop */
 
-@media (min-width:769px){
-
-.mobile-menu-btn,
-.sidebar-overlay{
-display:none;
-}
-
-.sidebar{
-position:relative;
-left:0;
-width:250px;
-height:100vh;
-}
-
-}
