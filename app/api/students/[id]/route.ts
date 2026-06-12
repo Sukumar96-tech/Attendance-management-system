@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from "next/server";
 import pool from "@/lib/db";
 
@@ -7,16 +8,20 @@ import pool from "@/lib/db";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: {
+    params: Promise<{ id: string }>;
+  }
 ) {
   try {
+    const { id } = await context.params;
+
     const result = await pool.query(
       `
       SELECT *
       FROM students
       WHERE id=$1
       `,
-      [params.id]
+      [id]
     );
 
     if (result.rows.length === 0) {
@@ -51,9 +56,13 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: {
+    params: Promise<{ id: string }>;
+  }
 ) {
   try {
+    const { id } = await context.params;
+
     const {
       name,
       year,
@@ -63,20 +72,17 @@ export async function PUT(
     await pool.query(
       `
       UPDATE students
-
       SET
-
       name=$1,
       year=$2,
       branch=$3
-
       WHERE id=$4
       `,
       [
         name,
         year,
         branch,
-        params.id,
+        id,
       ]
     );
 
@@ -104,19 +110,20 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: {
+    params: Promise<{ id: string }>;
+  }
 ) {
   try {
+    const { id } = await context.params;
 
     const student = await pool.query(
       `
       SELECT hall_ticket
-
       FROM students
-
       WHERE id=$1
       `,
-      [params.id]
+      [id]
     );
 
     if (student.rows.length === 0) {
@@ -136,16 +143,14 @@ export async function DELETE(
     await pool.query(
       `
       DELETE FROM students
-
       WHERE id=$1
       `,
-      [params.id]
+      [id]
     );
 
     await pool.query(
       `
       DELETE FROM users
-
       WHERE username=$1
       `,
       [hallTicket]
@@ -155,9 +160,7 @@ export async function DELETE(
       success: true,
       message: "Student Deleted",
     });
-
   } catch (error) {
-
     console.error(error);
 
     return NextResponse.json(
@@ -168,6 +171,6 @@ export async function DELETE(
         status: 500,
       }
     );
-
   }
 }
+
