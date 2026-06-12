@@ -1020,3 +1020,97 @@ font-size:18px;
     padding:20px;
   }
 }
+/* ===========================
+   Responsive Sidebar
+=========================== */
+
+.menu-btn{
+display:none;
+position:fixed;
+top:15px;
+left:15px;
+z-index:1001;
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+font-size:24px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.menu-btn{
+display:block;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+left:-280px;
+width:260px;
+height:100vh;
+background:#1e3a8a;
+transition:.3s;
+z-index:1000;
+overflow-y:auto;
+}
+
+.sidebar.show{
+left:0;
+}
+
+.main-content{
+margin-left:0 !important;
+width:100%;
+padding:15px;
+}
+
+.topbar{
+padding-top:60px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.student-grid{
+grid-template-columns:1fr;
+}
+
+.student-summary{
+grid-template-columns:1fr;
+}
+
+.reports-grid{
+grid-template-columns:1fr;
+}
+
+.action-grid{
+grid-template-columns:1fr;
+}
+
+.students-header{
+flex-direction:column;
+gap:10px;
+}
+
+.students-page input,
+.students-page select,
+.attendance-page input,
+.attendance-page select{
+width:100%;
+}
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+.btn,
+button{
+max-width:100%;
+}
+  }
